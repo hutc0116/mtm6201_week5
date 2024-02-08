@@ -1,0 +1,140 @@
+.wrapper {
+	width: 800px;
+	margin: 0 auto;
+}
+
+.transform,
+.transition,
+.animation {
+	border: 1px solid #999;
+	margin: 20px 0;
+	padding: 0 0;
+}
+
+.box {
+	width: 200px;
+	height: 200px;
+}
+
+.b1 {
+	background-color: #89cff0;
+	/*baby blue*/
+}
+
+.b2 {
+	background-color: #de5d83;
+	/*blush*/
+}
+
+.b3 {
+	background-color: #9696ff;
+	/*purple*/
+}
+
+.b4 {
+	background-color: #e89380;
+	/*orange*/
+}
+/*Transitions*/
+.transition .b1{ /*Box 1*/
+    transition:width 1s ease-in 0.5s;
+}
+.transition .b1:hover{
+    width:400px;
+}
+.transition .b2{ /*Box 2*/
+    transition:width 1s ease-in 0.5s,height 1s ease-in 0.5s;
+}
+.transition .b2:hover{
+    width:400px;
+    height:400px;
+}
+.transition .b3{ /*Box 3*/
+    transition:transform 2s cubic-bezier(.27,1.96,.72,.69) 0.5s;
+}
+.transition .b3:hover{
+    transform:rotate(60deg);
+}
+.transition .b4{ /*Box 4*/
+    transition:background-color 2s ease-in 0.5s,border-radius 2s ease-in 0.5s;
+}
+.transition .b4:hover{
+    background-color:yellowgreen;
+    border-radius:100px;
+}
+/*Transformations*/
+.transform .box{ /*All boxes*/
+    transition:transform 1s ease-in 0.5s;
+}
+.transform .b1:hover{ /*Box 1*/
+    transform:translate(60px,60px);
+}
+.transform .b2:hover{ /*Box 2*/
+    transform:scale(2);
+}
+.transform .b3:hover{ /*Box 3*/
+    transform:rotate(180deg);
+}
+.transform .b4:hover{ /*Box 4*/
+    transform:skewX(30deg)skewY(30deg);
+}
+/*Animations*/
+.animation .b1{ /*Box 1*/
+    animation-name:bgcolor;
+    animation-duration:2s;
+    animation-timing-function:ease-in;
+    animation-delay:0.5s;
+    animation-iteration-count:infinite;
+    animation-direction:alternate;
+    animation-fill-mode:none;
+    animation-play-state:running;
+}
+@keyframes bgcolor{
+    from{
+        background-color:#89cff0;
+    }
+    to{
+        background-color:black;
+    }
+}
+.animation .b2{ /*Box 2*/
+    animation-name:movement;
+    animation-duration:2s;
+    animation-timing-function:ease-in;
+    animation-delay:0.5s;
+    animation-iteration-count:infinite;
+    animation-direction:alternate;
+    animation-fill-mode:none;
+    animation-play-state:running;
+}
+@keyframes movement{
+    0%{
+        transform:translate(0,0);
+    }
+    25%{
+        transform:translate(200px,0);
+    }
+    50%{
+        transform:translate(200px,200px);
+    }
+    75%{
+        transform:translate(0,200px);
+    }
+    100%{
+        transform:translate(0,0);
+    }
+}
+.animation .b3{ /*Box 3*/
+    animation:changebox 2s ease-in 0.5s infinite alternate none running;
+}
+.animation .b3:hover{
+    animation-play-state:paused;
+}
+@keyframes changebox{
+    0%{
+        transform:scale(0.5) rotate(0) translateX(0);
+    }
+    100%{
+        transform:scale(1) rotate(180deg) translateX(150px);     
+    }
+}
